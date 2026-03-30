@@ -1,0 +1,25 @@
+# Document collection
+pymed==0.8.9
+requests==2.32.3
+beautifulsoup4==4.12.3
+PyMuPDF==1.25.3
+
+# Text processing
+langchain==0.3.20
+langchain-community==0.3.19
+langchain-huggingface==0.1.2
+langchain-chroma==0.2.2
+
+# Embeddings and vector store
+chromadb==0.6.3
+sentence-transformers==3.4.1
+
+# LLM (local via Ollama)
+langchain-ollama==0.3.2
+
+# UI
+gradio==5.20.1
+
+# Utilities
+python-dotenv==1.0.1
+tqdm==4.67.1
