@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "question": "What causes cerebral malaria?",
+    "expected_topics": ["Plasmodium falciparum", "sequestration", "parasitized red blood cells", "brain microvasculature"],
+    "category": "pathogenesis"
+  },
+  {
+    "id": 2,
+    "question": "How is cerebral malaria diagnosed?",
+    "expected_topics": ["coma", "parasitemia", "retinopathy", "fundoscopy", "blood film"],
+    "category": "diagnosis"
+  },
+  {
+    "id": 3,
+    "question": "What is the mortality rate of cerebral malaria in children?",
+    "expected_topics": ["15-20%", "mortality", "children", "fatal"],
+    "category": "epidemiology"
+  },
+  {
+    "id": 4,
+    "question": "What are the neurological sequelae of cerebral malaria?",
+    "expected_topics": ["cognitive impairment", "epilepsy", "motor deficits", "behavioral"],
+    "category": "sequelae"
+  },
+  {
+    "id": 5,
+    "question": "What is the role of malarial retinopathy in cerebral malaria?",
+    "expected_topics": ["retinopathy", "diagnostic", "specificity", "fundoscopy", "retinal whitening"],
+    "category": "diagnosis"
+  },
+  {
+    "id": 6,
+    "question": "How does Plasmodium falciparum cross the blood-brain barrier?",
+    "expected_topics": ["blood-brain barrier", "endothelial", "sequestration", "cytoadherence", "PfEMP1"],
+    "category": "pathogenesis"
+  },
+  {
+    "id": 7,
+    "question": "What is the standard treatment for cerebral malaria?",
+    "expected_topics": ["artesunate", "intravenous", "quinine", "antimalarial"],
+    "category": "treatment"
+  },
+  {
+    "id": 8,
+    "question": "What is the difference between cerebral malaria and severe malaria?",
+    "expected_topics": ["coma", "neurological", "unarousable", "severe anemia", "organ dysfunction"],
+    "category": "definition"
+  },
+  {
+    "id": 9,
+    "question": "What cytokines are involved in cerebral malaria pathogenesis?",
+    "expected_topics": ["TNF", "interferon", "inflammatory", "cytokine", "immune response"],
+    "category": "pathogenesis"
+  },
+  {
+    "id": 10,
+    "question": "How common is epilepsy after cerebral malaria?",
+    "expected_topics": ["epilepsy", "seizure", "risk", "children", "long-term"],
+    "category": "sequelae"
+  },
+  {
+    "id": 11,
+    "question": "What is the WHO definition of cerebral malaria?",
+    "expected_topics": ["WHO", "unarousable coma", "Plasmodium falciparum", "Blantyre coma score", "other causes excluded"],
+    "category": "definition"
+  },
+  {
+    "id": 12,
+    "question": "What brain imaging findings are seen in cerebral malaria?",
+    "expected_topics": ["MRI", "brain swelling", "edema", "imaging"],
+    "category": "diagnosis"
+  },
+  {
+    "id": 13,
+    "question": "Which populations are most at risk for cerebral malaria?",
+    "expected_topics": ["children under 5", "Africa", "endemic", "non-immune", "pregnant women"],
+    "category": "epidemiology"
+  },
+  {
+    "id": 14,
+    "question": "What is the role of platelets in cerebral malaria?",
+    "expected_topics": ["platelet", "thrombocytopenia", "coagulation", "microvasculature"],
+    "category": "pathogenesis"
+  },
+  {
+    "id": 15,
+    "question": "How does cerebral malaria affect cognitive development in children?",
+    "expected_topics": ["cognitive", "development", "impairment", "memory", "attention", "learning"],
+    "category": "sequelae"
+  },
+  {
+    "id": 16,
+    "question": "What is the pathological hallmark of cerebral malaria on autopsy?",
+    "expected_topics": ["sequestration", "parasitized erythrocytes", "brain microvasculature", "hemorrhage", "ring hemorrhage"],
+    "category": "pathogenesis"
+  },
+  {
+    "id": 17,
+    "question": "What adjunctive therapies have been tried for cerebral malaria?",
+    "expected_topics": ["adjunctive", "steroids", "mannitol", "anticonvulsants", "neuroprotective"],
+    "category": "treatment"
+  },
+  {
+    "id": 18,
+    "question": "What is the Blantyre Coma Scale?",
+    "expected_topics": ["Blantyre", "coma scale", "pediatric", "score", "motor", "verbal", "eye"],
+    "category": "diagnosis"
+  },
+  {
+    "id": 19,
+    "question": "How does cerebral malaria differ between adults and children?",
+    "expected_topics": ["adults", "children", "multi-organ", "seizures", "respiratory distress"],
+    "category": "epidemiology"
+  },
+  {
+    "id": 20,
+    "question": "What is the life cycle of Plasmodium falciparum relevant to cerebral malaria?",
+    "expected_topics": ["merozoite", "erythrocyte", "schizont", "mosquito", "life cycle"],
+    "category": "pathogenesis"
+  }
+]
