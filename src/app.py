@@ -43,10 +43,7 @@ def create_app():
 
         return result["answer"], sources_md
 
-    with gr.Blocks(
-        title="Cerebral Malaria RAG",
-        theme=gr.themes.Soft(),
-    ) as app:
+    with gr.Blocks(title="Cerebral Malaria RAG") as app:
         gr.Markdown(
             "# Cerebral Malaria Q&A\n"
             "Ask questions about cerebral malaria. Answers are grounded in "
@@ -80,4 +77,4 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    app.launch(server_name="0.0.0.0", server_port=7860)
+    app.launch(server_name="0.0.0.0", server_port=7860, theme=gr.themes.Soft())
