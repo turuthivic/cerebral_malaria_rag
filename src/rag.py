@@ -22,23 +22,33 @@ EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 LLM_MODEL = "qwen2.5:7b"
 COLLECTION_NAME = "cerebral_malaria"
 TOP_K = 5
+SIMILARITY_THRESHOLD = 0.5
 
-SYSTEM_PROMPT = """You are a medical expert specializing in cerebral malaria. Answer the question based ONLY on the provided context. If the context does not contain enough information to answer, say so clearly.
+SYSTEM_PROMPT = """You are a medical expert specializing in cerebral malaria. Answer the question based ONLY on the provided context from medical literature.
 
 Rules:
-- Be accurate and cite which source supports each claim
-- Use clear, professional medical language
-- If multiple sources agree, synthesize them into a coherent answer
-- Do not make claims beyond what the context supports"""
+- Reference sources by number (e.g., "Source 1", "Source 3") to support each claim
+- Use clear, professional medical language accessible to clinicians and researchers
+- Synthesize information across sources into a coherent, structured answer
+- If the context is insufficient or only partially relevant, state what is known and what is missing
+- NEVER fabricate information — only state what the sources support
+- This system ONLY answers questions about cerebral malaria. If the question is unrelated, say: "This system is designed to answer questions about cerebral malaria only."
+"""
+
+NO_CONTEXT_ANSWER = (
+    "I don't have enough relevant information in my knowledge base to answer "
+    "this question confidently. Try rephrasing or asking a more specific "
+    "question about cerebral malaria."
+)
 
 PROMPT_TEMPLATE = """{system}
 
-Context:
+Context from medical literature:
 {context}
 
 Question: {question}
 
-Answer:"""
+Provide a structured answer with source citations:"""
 
 
 class RAGPipeline:
@@ -55,7 +65,7 @@ class RAGPipeline:
         self.llm = OllamaLLM(model=LLM_MODEL, temperature=0.1)
 
     def retrieve(self, query: str, top_k: int = TOP_K) -> list[dict]:
-        """Find the most relevant chunks for a query."""
+        """Find the most relevant chunks for a query, filtered by similarity threshold."""
         query_embedding = self.embedder.encode(
             [query], normalize_embeddings=True
         ).tolist()
@@ -71,12 +81,15 @@ class RAGPipeline:
             results["metadatas"][0],
             results["distances"][0],
         ):
+            similarity = 1 - distance
+            if similarity < SIMILARITY_THRESHOLD:
+                continue
             chunks.append({
                 "text": doc,
                 "source": meta.get("source", ""),
                 "title": meta.get("title", ""),
                 "year": meta.get("year", ""),
-                "similarity": 1 - distance,  # cosine distance → similarity
+                "similarity": similarity,
             })
         return chunks
 
@@ -93,8 +106,15 @@ class RAGPipeline:
         return "\n\n---\n\n".join(parts)
 
     def query(self, question: str, top_k: int = TOP_K) -> dict:
-        """Full RAG pipeline: retrieve → format → generate."""
+        """Full RAG pipeline: retrieve → filter → format → generate."""
         chunks = self.retrieve(question, top_k)
+
+        if not chunks:
+            return {
+                "question": question,
+                "answer": NO_CONTEXT_ANSWER,
+                "sources": [],
+            }
 
         context = self.format_context(chunks)
         prompt = PROMPT_TEMPLATE.format(
